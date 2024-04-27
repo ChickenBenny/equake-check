@@ -19,9 +19,10 @@ def display_earthquake_info(num: int = 5, **kwargs):
     service = Service(num_of_data=num)
     data = service.get_data()
     if data:
+        print(f"最近{num}筆地震資訊如下:")
         display(data)
     else:
-        print("No data available")
+        print("沒有地震相關的資訊")
 
 def recently_have_earthquake(hour: int = 1, **kwargs):
     if not hour:
@@ -30,20 +31,18 @@ def recently_have_earthquake(hour: int = 1, **kwargs):
     check_time = current_time - datetime.timedelta(hours=int(hour))
     service = Service()
     data = service.get_data()
-    print(check_time, " ", current_time, " ", hour)
     if data:
         accept_data = []
         for eq in data:
             if eq.datatime_in_tw >= check_time and eq.datatime_in_tw <= current_time:
-                print()
                 accept_data.append(eq)
         if accept_data:
-            print("There are recent earthquakes in Taiwan, here are the details:")
+            print(f"最近{hour}小時內有{len(accept_data)}次地震，詳細資訊如下:")
             display(accept_data)
         else:
-            print("No recent earthquakes in Taiwan")
+            print(f"最近{hour}小時內沒有地震")
     else:
-        print("No data available")
+        print("沒有地震相關的資訊")
 
 def main():
     parser = argparse.ArgumentParser(description='Earthquake information CLI')
