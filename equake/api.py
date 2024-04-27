@@ -15,11 +15,11 @@ def display(data):
         print(f"| {eq.datatime_in_tw}\t| {eq.scale}\t\t| {eq.depth}\t\t| {eq.location}\t|")
         print("-" * 113)
 
-def display_earthquake_info(num: int = 5, **kwargs):
-    service = Service(num_of_data=num)
+def display_earthquake_info(rows: int = 5, **kwargs):
+    service = Service(num_of_data=rows)
     data = service.get_data()
     if data:
-        print(f"最近{num}筆地震資訊如下:")
+        print(f"最近{rows}筆地震資訊如下:")
         display(data)
     else:
         print("沒有地震相關的資訊")
@@ -66,4 +66,3 @@ def main():
         args.func(**vars(args))
     else:
         parser.print_help()
-
