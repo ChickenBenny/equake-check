@@ -12,7 +12,7 @@ setup(
     author='ChickenBenny',
     author_email='zxc123benny14159@gmail.com',
     description='A package for checking earthquake information in Taiwan.',
-    long_description=open('README.md').read(),
+    long_description=open('README.md',encoding='utf-8').read(),
     long_description_content_type='text/markdown',
     url='https://github.com/ChickenBenny/equake-check',
     classifiers=[
